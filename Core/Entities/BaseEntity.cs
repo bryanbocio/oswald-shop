@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Core.Entities
 {
-    public class Product : BaseEntity
+    public  class BaseEntity
     {
-        public string name { get; set; }
-    
+        public int id { get; set; }
     }
 }
