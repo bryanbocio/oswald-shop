@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X8h/xA2ZIcf24B4fLiVYWYcxINFtJzgfCx1rptVGfsi05ndCxXDU4saRFt88uPDGWJqaBlrN1Rk2gbw4/1PK7w==",
+  "dgSpecHash": "wbqkUD7pQ0NcfJccN3x94uTSjRaIw88/t9C18kRonYZhyKMvnkPI5UfMKBfBNFqFbe31H4gDj+9faXIE7BmTVA==",
   "success": true,
-  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\API\\API.csproj",
+  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xander\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\xander\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.4\\microsoft.data.sqlite.core.6.0.4.nupkg.sha512",

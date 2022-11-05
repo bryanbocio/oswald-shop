@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "aDZmbDgXUrf589c0dQSIRO0NbCBWoDCAx9/DO2GHM+q8qARJfqQt52QTiBA2+Soh2nrtZY0sipHGVmHJZeMdtw==",
+  "dgSpecHash": "jJLgEV5HQ0+UWihgcpd6IBnBQSUNUBA0MI0NyuJZRcd49T1IRs1g3SuNbWqle+aRm4lBMD9b7X42hF7YFBLYsw==",
   "success": true,
-  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj",
+  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

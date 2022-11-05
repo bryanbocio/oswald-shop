@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ikzsT2WEzdVdlY1WMMzgZG2N64r/7RA7ez9J12cj1SkTyqOZHwyy4VJ7/9GDDvk9WdwKPpOWwmATZech2H9SPQ==",
+  "dgSpecHash": "KrNh+ge7XnDZL2gjOFzfMzlBaJbA3fvpEmdUZD11h1CydI9Z2gROCfIPn2gOxPVJbmn1BLwYdIta8mLh8f+h4Q==",
   "success": true,
-  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\Infrastructure.csproj",
+  "projectFilePath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\xander\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.4\\microsoft.data.sqlite.core.6.0.4.nupkg.sha512",
     "C:\\Users\\xander\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.4\\microsoft.entityframeworkcore.6.0.4.nupkg.sha512",

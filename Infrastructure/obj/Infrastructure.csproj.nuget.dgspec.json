@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\Infrastructure.csproj": {}
+    "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj": {
+    "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj",
+        "projectUniqueName": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj",
+        "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\xander\\.nuget\\packages\\",
-        "outputPath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\obj\\",
+        "outputPath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xander\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\Infrastructure.csproj": {
+    "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\xander\\.nuget\\packages\\",
-        "outputPath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Infrastructure\\obj\\",
+        "outputPath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xander\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -82,8 +82,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj": {
-                "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\Backend\\Core\\Core.csproj"
+              "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj": {
+                "projectPath": "A:\\Onion-Ecommerce\\oswald-shop\\oswald-shop\\Core\\Core.csproj"
               }
             }
           }
