@@ -22,8 +22,9 @@ namespace API
                 var loggerFactory= services.GetRequiredService<ILoggerFactory>();
                 try
                 {
-                    var context = services.GetRequiredService<StoreContext>();
-                    await context.Database.MigrateAsync();
+                    var storeContext = services.GetRequiredService<StoreContext>();
+                    await storeContext.Database.MigrateAsync();
+                    await StoreContextSeed.seedAsync(storeContext, loggerFactory);
 
                 }
                 catch (Exception exception)
