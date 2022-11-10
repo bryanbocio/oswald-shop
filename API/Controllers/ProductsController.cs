@@ -11,32 +11,40 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        public ProductsController(IProductRepository productRepository)
+        private readonly IGenericRepository<Product> _productRepository;
+        private readonly IGenericRepository<ProductBrand> _productBrandsRepository;
+        private readonly IGenericRepository<ProductType> _productTypesRepository;
+
+        public ProductsController(
+                            IGenericRepository<Product> productRepository, 
+                            IGenericRepository<ProductBrand> productBrandsRepository,
+                            IGenericRepository<ProductType> productTypesRepository)
         {
             _productRepository = productRepository;
+            _productBrandsRepository = productBrandsRepository;
+            _productTypesRepository = productTypesRepository;
         }
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Product>>> getProducts(){
-            return Ok(await _productRepository.getProductsAsync());
+            return Ok(await _productRepository.listAllAsync());
         }
 
         [HttpGet("{id}")] 
         public async Task<ActionResult<Product>>getProduct(int id){
-            return Ok(await _productRepository.getProductsByIdAsync(id));
+            return Ok(await _productRepository.getByIdAsync(id));
         }
 
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> getProductBrands()
         {
-            return Ok(await _productRepository.getProductsBrandsAsync());
+            return Ok(await _productBrandsRepository.listAllAsync());
         }
 
         [HttpGet("product-types")]
         public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes()
         {
-            return Ok(await _productRepository.getProductTypesAsync());
+            return Ok(await _productTypesRepository.listAllAsync());
         }
     }
 }
