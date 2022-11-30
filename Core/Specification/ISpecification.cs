@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Specification
 {
-    internal interface ISpecification<T>
+    public interface ISpecification<T>
     {
 
         Expression<Func<T, bool>> criteria { get; }
