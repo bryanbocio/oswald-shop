@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Core.Specification
 {
-    internal interface Specification<T>
+    internal interface ISpecification<T>
     {
 
         Expression<Func<T, bool>> criteria { get; }
-        List<Expression<Func<T, object>>> include { get; }
+        List<Expression<Func<T, object>>> includes { get; }
     }
 }
