@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Core.Interfaces;
 using Core.Specification.Products;
+using API.DTOs;
 
 namespace API.Controllers
 {
@@ -27,13 +28,22 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Product>>> getProducts(){
-            return Ok(await _productRepository.listAsync(new ProductsWithTypesAndBrandsSpecification()));
+        public async Task<ActionResult<List<ProductDto>>> getProducts(){
+
+            var products= await _productRepository.listAsync(new ProductsWithTypesAndBrandsSpecification());
+
+            return products.Select(product=>buildProductDto(product)).ToList();
+            
+
+
         }
 
         [HttpGet("{id}")] 
-        public async Task<ActionResult<Product>>getProduct(int id){
-            return Ok(await _productRepository.getByIdAsync(id));
+        public async Task<ActionResult<ProductDto>>getProduct(int id){
+            
+            var product =await _productRepository.getEntityWithSpecification(new ProductsWithTypesAndBrandsSpecification(id));
+
+            return buildProductDto(product);
         }
 
         [HttpGet("brands")]
@@ -46,6 +56,21 @@ namespace API.Controllers
         public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes()
         {
             return Ok(await _productTypesRepository.listAllAsync());
+        }
+
+
+        private ProductDto buildProductDto(Product product)
+        {
+           return new ProductDto
+            {
+                id = product.id,
+                name = product.name,
+                description = product.description,
+                pictureUrl = product.pictureUrl,
+                price = product.price,
+                productBrand = product.productBrand.name,
+                productType = product.productType.name
+            };
         }
     }
 }
