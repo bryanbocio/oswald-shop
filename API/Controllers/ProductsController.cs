@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Infrastructure.Data;
 using Core.Interfaces;
+using Core.Specification.Products;
 
 namespace API.Controllers
 {
@@ -27,7 +28,7 @@ namespace API.Controllers
 
         [HttpGet]
         public async Task<ActionResult<IReadOnlyList<Product>>> getProducts(){
-            return Ok(await _productRepository.listAllAsync());
+            return Ok(await _productRepository.listAsync(new ProductsWithTypesAndBrandsSpecification()));
         }
 
         [HttpGet("{id}")] 
