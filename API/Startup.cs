@@ -15,6 +15,7 @@ using Microsoft.OpenApi.Models;
 using Infrastructure.Data;
 using Core.Interfaces;
 using Infrastructure.Data.Repositories;
+using API.Helpers;
 
 namespace API
 {
@@ -34,6 +35,9 @@ namespace API
 
             services.AddScoped<IProductRepository,ProductRepository>();
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+
+            services.AddAutoMapper(typeof(MappingProfiles));
+
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlite(this._configuracion.GetConnectionString("DefaultConnection")));
             services.AddSwaggerGen(c =>
