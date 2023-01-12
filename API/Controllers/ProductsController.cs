@@ -6,6 +6,7 @@ using Core.Interfaces;
 using Core.Specification.Products;
 using API.DTOs;
 using AutoMapper;
+using System.Collections.Generic;
 
 namespace API.Controllers
 {
@@ -31,11 +32,12 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ProductDto>>> getProducts(){
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> getProducts(){
 
-            var products= await _productRepository.listAsync(new ProductsWithTypesAndBrandsSpecification());
+            var specifications = new ProductsWithTypesAndBrandsSpecification();
+            var products= await _productRepository.listAsync(specifications);
 
-            return products.Select(product=>buildProductDto(product)).ToList();
+            return Ok(_mapper.Map<IReadOnlyList<Product>, IReadOnlyList<ProductDto>>(products));
             
 
 
@@ -44,7 +46,9 @@ namespace API.Controllers
         [HttpGet("{id}")] 
         public async Task<ActionResult<ProductDto>>getProduct(int id){
             
-            var product =await _productRepository.getEntityWithSpecification(new ProductsWithTypesAndBrandsSpecification(id));
+            var specifications = new ProductsWithTypesAndBrandsSpecification(id);
+
+            var product =await _productRepository.getEntityWithSpecification(specifications);
 
             return _mapper.Map<Product,ProductDto>(product);
         }
