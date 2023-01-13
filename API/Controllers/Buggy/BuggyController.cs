@@ -29,7 +29,7 @@ namespace API.Controllers.Buggy
         public ActionResult GetServerError()
         {
 
-            var thing = _context.Products.FindAsync(42);
+            var thing = _context.Products.Find(42);
 
             var thingTOreturn= thing.ToString();
 
