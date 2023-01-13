@@ -1,4 +1,5 @@
-﻿using Infrastructure.Data;
+﻿using API.Errors;
+using Infrastructure.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Buggy
@@ -18,7 +19,7 @@ namespace API.Controllers.Buggy
 
             if(thing == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse(404));
             }
 
             return Ok();
@@ -39,7 +40,7 @@ namespace API.Controllers.Buggy
         [HttpGet("badrequest")]
         public ActionResult GetBadRequest()
         {
-           return BadRequest();
+           return BadRequest(new ApiResponse(400));
         }
 
         [HttpGet("badrequest/{id}")]
