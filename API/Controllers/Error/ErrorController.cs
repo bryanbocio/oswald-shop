@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace API.Controllers.Error
 {
 
-    [Route("erros/{code}")]
+    [Route("errors/{code}")]
     public class ErrorController : BaseApiController
     {
         public IActionResult Error(int statusCode)
