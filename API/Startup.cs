@@ -17,6 +17,7 @@ using Core.Interfaces;
 using Infrastructure.Data.Repositories;
 using API.Helpers;
 using API.Middleware;
+using API.Errors;
 
 namespace API
 {
@@ -41,6 +42,24 @@ namespace API
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlite(this._configuracion.GetConnectionString("DefaultConnection")));
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
+                {
+                    var errors = actionContext.ModelState.Where(error => error.Value.Errors.Count > 0)
+                    .SelectMany(x => x.Value.Errors)
+                    .Select(x => x.ErrorMessage).ToArray();
+
+                    var errorResponse = new ApiValidationErrorResponse
+                    {
+                        Errors = errors 
+                    };
+
+                    return new BadRequestObjectResult(errorResponse);
+            };
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
