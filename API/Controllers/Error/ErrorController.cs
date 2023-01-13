@@ -5,6 +5,7 @@ namespace API.Controllers.Error
 {
 
     [Route("errors/{code}")]
+    [ApiExplorerSettings(IgnoreApi =true)]
     public class ErrorController : BaseApiController
     {
         public IActionResult Error(int statusCode)
