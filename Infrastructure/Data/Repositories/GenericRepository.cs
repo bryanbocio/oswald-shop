@@ -28,18 +28,21 @@ namespace Infrastructure.Data.Repositories
 
         public async Task<T> getEntityWithSpecification(ISpecification<T> specification)
         {
-            return await applySpecification(specification).FirstOrDefaultAsync();
+            return await ApplySpecification(specification).FirstOrDefaultAsync();
         }
 
         public async Task<IReadOnlyList<T>> listAsync(ISpecification<T> specification)
         {
-            return await applySpecification(specification).ToListAsync();   
+            return await ApplySpecification(specification).ToListAsync();   
         }
 
-        private IQueryable<T> applySpecification(ISpecification<T> specification)
+        public async Task<int> CountAsync(ISpecification<T> specification)
+        {
+            return await ApplySpecification(specification).CountAsync();
+        }
+        private IQueryable<T> ApplySpecification(ISpecification<T> specification)
         {
             return SpecificationEvaluator<T>.getQuery(_storeContext.Set<T>().AsQueryable(), specification);
         }
-       
     }
 }
