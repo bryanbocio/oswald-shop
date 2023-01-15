@@ -25,7 +25,7 @@ namespace Core.Specification.Products
 
         private string _search;
 
-        public string Search 
+        public string? Search 
         {
             get => _search;
             set => _search =value.ToLower();
