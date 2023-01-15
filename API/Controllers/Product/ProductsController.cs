@@ -32,7 +32,7 @@ namespace API.Controllers.Products
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductDto>>> getProducts(){
+        public async Task<ActionResult<IReadOnlyList<ProductDto>>> GetProducts(){
 
             var specifications = new ProductsWithTypesAndBrandsSpecification();
             var products= await _productRepository.listAsync(specifications);
@@ -46,7 +46,7 @@ namespace API.Controllers.Products
         [HttpGet("{id}")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse),StatusCodes.Status404NotFound)]
-        public async Task<ActionResult<ProductDto>>getProduct(int id){
+        public async Task<ActionResult<ProductDto>>GetProduct(int id){
             
             var specifications = new ProductsWithTypesAndBrandsSpecification(id);
 
@@ -58,30 +58,17 @@ namespace API.Controllers.Products
         }
 
         [HttpGet("brands")]
-        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> getProductBrands()
+        public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await _productBrandsRepository.listAllAsync());
         }
 
         [HttpGet("product-types")]
-        public async Task<ActionResult<IReadOnlyList<ProductType>>> getProductTypes()
+        public async Task<ActionResult<IReadOnlyList<ProductType>>> GetProductTypes()
         {
             return Ok(await _productTypesRepository.listAllAsync());
         }
 
 
-        private ProductDto buildProductDto(Product product)
-        {
-           return new ProductDto
-            {
-                id = product.id,
-                name = product.name,
-                description = product.description,
-                pictureUrl = product.pictureUrl,
-                price = product.price,
-                productBrand = product.productBrand.name,
-                productType = product.productType.name
-            };
-        }
     }
 }
