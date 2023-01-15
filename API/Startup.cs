@@ -1,12 +1,6 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.OpenApi.Models;
 using Infrastructure.Data;
-using Core.Interfaces;
-using Infrastructure.Data.Repositories;
-using API.Helpers;
 using API.Middleware;
-using API.Errors;
 using API.Extensions;
 
 namespace API
@@ -26,18 +20,12 @@ namespace API
         {
 
             services.AddApplicationServices();
-
-            services.AddAutoMapper(typeof(MappingProfiles));
-
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlite(this._configuracion.GetConnectionString("DefaultConnection")));
 
-          
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
-            });
+            services.AddSwaggerDocumentation();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,8 +33,7 @@ namespace API
         {
             app.UseMiddleware<ExceptionMiddleware>();
 
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
+            app.UseSwaggerDocumentation();
 
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
