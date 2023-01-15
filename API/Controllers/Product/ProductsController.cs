@@ -45,7 +45,7 @@ namespace API.Controllers.Products
 
         [HttpGet("{id}")] 
         [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ApiResponse),StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductDto>>getProduct(int id){
             
             var specifications = new ProductsWithTypesAndBrandsSpecification(id);
