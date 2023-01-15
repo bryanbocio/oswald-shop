@@ -7,6 +7,7 @@ using Infrastructure.Data.Repositories;
 using API.Helpers;
 using API.Middleware;
 using API.Errors;
+using API.Extensions;
 
 namespace API
 {
@@ -24,30 +25,14 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddScoped<IProductRepository,ProductRepository>();
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
+            services.AddApplicationServices();
 
             services.AddAutoMapper(typeof(MappingProfiles));
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlite(this._configuracion.GetConnectionString("DefaultConnection")));
 
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.InvalidModelStateResponseFactory = actionContext =>
-                {
-                    var errors = actionContext.ModelState.Where(error => error.Value.Errors.Count > 0)
-                    .SelectMany(x => x.Value.Errors)
-                    .Select(x => x.ErrorMessage).ToArray();
-
-                    var errorResponse = new ApiValidationErrorResponse
-                    {
-                        Errors = errors 
-                    };
-
-                    return new BadRequestObjectResult(errorResponse);
-            };
-            });
+          
 
             services.AddSwaggerGen(c =>
             {
