@@ -7,6 +7,7 @@ using Core.Specification.Products;
 using API.DTOs;
 using AutoMapper;
 using System.Collections.Generic;
+using API.Errors;
 
 namespace API.Controllers.Products
 {
@@ -43,11 +44,15 @@ namespace API.Controllers.Products
         }
 
         [HttpGet("{id}")] 
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<ProductDto>>getProduct(int id){
             
             var specifications = new ProductsWithTypesAndBrandsSpecification(id);
 
             var product =await _productRepository.getEntityWithSpecification(specifications);
+
+            if (product == null) return NotFound(new ApiResponse(404));
 
             return _mapper.Map<Product,ProductDto>(product);
         }
