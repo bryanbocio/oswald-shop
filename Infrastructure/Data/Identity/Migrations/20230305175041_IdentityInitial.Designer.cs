@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Infrastructure.Identity.Migrations
+namespace Infrastructure.Data.Identity.Migrations
 {
     [DbContext(typeof(AppIdentityDbContext))]
     [Migration("20230305175041_IdentityInitial")]
