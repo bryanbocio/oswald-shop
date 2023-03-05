@@ -1,5 +1,6 @@
 ﻿using API.Errors;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers.Buggy
@@ -24,6 +25,15 @@ namespace API.Controllers.Buggy
 
             return Ok();
         }
+
+        [Authorize]
+        [HttpGet("testauth")]
+        public ActionResult<string> GetSecrectText()
+        {
+            return "secrect stuff";
+        }
+
+
 
         [HttpGet("servererror")]
         public ActionResult GetServerError()
