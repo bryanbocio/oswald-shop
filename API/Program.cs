@@ -1,13 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Infrastructure.Data;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace API
 {
@@ -20,6 +12,7 @@ namespace API
             {
                 var services = scope.ServiceProvider;
                 var loggerFactory= services.GetRequiredService<ILoggerFactory>();
+                
                 try
                 {
                     var storeContext = services.GetRequiredService<StoreContext>();
