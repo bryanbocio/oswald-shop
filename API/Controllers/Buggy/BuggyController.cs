@@ -26,8 +26,8 @@ namespace API.Controllers.Buggy
             return Ok();
         }
 
-        [Authorize]
         [HttpGet("testauth")]
+        [Authorize]
         public ActionResult<string> GetSecrectText()
         {
             return "secrect stuff";
