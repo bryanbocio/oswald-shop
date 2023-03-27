@@ -1,5 +1,6 @@
 ﻿using API.DTOs;
 using API.DTOs.Account;
+using API.DTOs.Customer;
 using AutoMapper;
 using Core.Entities;
 using Core.Entities.Identity;
@@ -20,6 +21,9 @@ namespace API.Helpers
                      .ForMember(productDto => productDto.pictureUrl, options => options.MapFrom<ProductUrlResolver>());
 
             CreateMap<Address, AddressDto>().ReverseMap();
+
+            CreateMap<CustomerBasketDto, CustomerBasket>();
+            CreateMap<BasketItemsDto, BasketItems>();
         }
     }
 }
