@@ -10,7 +10,7 @@ namespace API.Controllers.Error
     {
         public IActionResult Error(int code)
         {
-            return new ObjectResult(new ApiException(code));
+            return new ObjectResult(new ApiResponse(code));
         }
     }
 }
