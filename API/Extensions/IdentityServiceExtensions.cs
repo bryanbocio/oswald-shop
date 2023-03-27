@@ -35,7 +35,7 @@ namespace API.Extensions
                     ValidAudience= config["Token:Audience"],
                     ValidateLifetime= true,
                     ValidateIssuer = true,
-                    ValidateAudience = true,
+                    ValidateAudience = false,
                 };
             });
 
