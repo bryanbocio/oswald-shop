@@ -21,6 +21,8 @@ namespace API
 
             services.AddControllers();
             services.AddDbContext<StoreContext>(options => options.UseSqlite(this._configuracion.GetConnectionString("DefaultConnection")));
+            services.AddIdentityServices(_configuracion);
+
 
             services.AddApplicationServices(_configuracion);
             services.AddSwaggerDocumentation();
@@ -52,6 +54,7 @@ namespace API
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
