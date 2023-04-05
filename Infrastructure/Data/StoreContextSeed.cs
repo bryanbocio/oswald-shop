@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Core.Entities.OrderAggregate;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
@@ -14,6 +15,9 @@ namespace Infrastructure.Data
                 await seedProductTypeDataAsync(storeContext);
                 await seedProductBrandDataAsync(storeContext);
                 await seedProductDataAsync(storeContext);
+                await seedDeliveryDataAsync(storeContext);
+
+                if(storeContext.ChangeTracker.HasChanges()) await storeContext.SaveChangesAsync();
             }
             catch (Exception exception)
             {
@@ -29,8 +33,7 @@ namespace Infrastructure.Data
                 var brandsData = File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
                 var productBrands= JsonConvert.DeserializeObject<List<ProductBrand>>(brandsData);
 
-                productBrands.ForEach(productBrand=> storeContext.ProductBrands.Add(productBrand));
-                await storeContext.SaveChangesAsync();
+               storeContext.ProductBrands.AddRange(productBrands);
             }
         }
 
@@ -41,8 +44,7 @@ namespace Infrastructure.Data
                 var productTypeData = File.ReadAllText("../Infrastructure/Data/SeedData/types.json");
                 var productTypes = JsonConvert.DeserializeObject<List<ProductType>>(productTypeData);
                
-                productTypes.ForEach(productType => storeContext.ProductTypes.Add(productType));
-                await storeContext.SaveChangesAsync();
+                storeContext.ProductTypes.AddRange(productTypes);
             }
         }
 
@@ -53,10 +55,23 @@ namespace Infrastructure.Data
                 var productData = File.ReadAllText("../Infrastructure/Data/SeedData/products.json");
                 var products = JsonConvert.DeserializeObject<List<Product>>(productData);
 
-                products.ForEach(product => storeContext.Products.Add(product));
-                await storeContext.SaveChangesAsync();
+                storeContext.Products.AddRange(products);
             }
 
         }
+
+        private static async Task seedDeliveryDataAsync(StoreContext storeContext)
+        {
+            if (!storeContext.DeliveryMethods.Any())
+            {
+                var deliveryMethodsData= File.ReadAllText("../Infrastructure/Data/SeedData/delivery.json");
+                var deliveryMethods = JsonConvert.DeserializeObject<List<DeliveryMethod>>(deliveryMethodsData);
+                    
+                storeContext.DeliveryMethods.AddRange(deliveryMethods); 
+              
+            }
+
+        }
+
     }
 }
