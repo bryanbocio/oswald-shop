@@ -15,12 +15,11 @@ namespace API.Extensions
         {
             services.AddAutoMapper(typeof(MappingProfiles));
 
-
+            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<IBasketRepository, BasketRepository>();
-
+            services.AddScoped<IOrderService, OrderService>();
 
             services.AddSingleton<IConnectionMultiplexer>(config =>
             {
