@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Core.Entities.OrderAggregate
 {
     public class Order : BaseEntity
@@ -41,7 +36,7 @@ namespace Core.Entities.OrderAggregate
 
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
-        public string PaymentItentId { get; set; }
+        public string? PaymentIntentId { get; set; }
 
         public decimal GetTotal()
         {
