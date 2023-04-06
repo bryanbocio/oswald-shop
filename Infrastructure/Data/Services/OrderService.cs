@@ -58,7 +58,7 @@ namespace Infrastructure.Data.Services
             //save to database
 
 
-            throw new NotImplementedException();
+            return order;
         }
 
         public Task<IReadOnlyList<DeliveryMethod>> GetDeliveryMethodsAsync()
