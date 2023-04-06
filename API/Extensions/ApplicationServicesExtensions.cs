@@ -3,6 +3,7 @@ using API.Helpers;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Data.Repositories;
+using Infrastructure.Data.Repositories.UnitOfWork;
 using Infrastructure.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using StackExchange.Redis;
@@ -14,6 +15,8 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuracion)
         {
             services.AddAutoMapper(typeof(MappingProfiles));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped(typeof(IGenericRepository<>), (typeof(GenericRepository<>)));
             services.AddScoped<IProductRepository, ProductRepository>();
