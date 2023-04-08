@@ -20,7 +20,7 @@ namespace API.Helpers
                 return _configuration["ApiUrl"]+source.pictureUrl;  
             }
 
-            return null;
+            return String.Empty;
         }
     }
 }
